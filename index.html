@@ -61,8 +61,11 @@
     <script>
         function showPopup(videoUrl) {
             document.getElementById('popup').style.display = 'block';
-            document.getElementById('downloadLink').href = videoUrl; // Set direct download link
-            document.getElementById('previewLink').href = videoUrl; // Set preview link
+
+            // 设置下载和预览链接
+            document.getElementById('downloadLink').href = videoUrl;
+            document.getElementById('previewLink').href = videoUrl;
+
             openOverlay();
         }
 
@@ -89,6 +92,10 @@
         <button onclick="window.open(document.getElementById('previewLink').href, '_blank')">预览视频</button>
         <button onclick="window.location.href = document.getElementById('downloadLink').href">直接下载</button>
         <button onclick="closePopup()">关闭</button>
+        
+        <!-- 隐藏的链接 -->
+        <a id="previewLink" style="display:none;"></a>
+        <a id="downloadLink" style="display:none;"></a>
     </div>
     
     <div class="hello">
@@ -167,7 +174,3 @@
     </div>
 </body>
 </html>
-
-
-
-最后更新时间：2024年12月18日
