@@ -63,7 +63,7 @@
             document.getElementById('popup').style.display = 'block';
 
             // 设置下载和预览链接
-            document.getElementById('downloadLink').href = videoUrl;
+            document.getElementById('download:').href = videoUrl;
             document.getElementById('previewLink').href = videoUrl;
 
             openOverlay();
@@ -88,7 +88,7 @@
     <div class="overlay" id="overlay" onclick="closeOverlay()"></div>
     <div class="popup" id="popup">
         <h3>选择功能</h3>
-        <button onclick="window.open('https://example.com/cloud-download', '_blank')">网盘下载</button>
+        <button onclick="window.open('？', '_blank')">网盘下载</button>
         <button onclick="window.open(document.getElementById('previewLink').href, '_blank')">预览视频</button>
         <button onclick="window.location.href = document.getElementById('downloadLink').href">直接下载</button>
         <button onclick="closePopup()">关闭</button>
