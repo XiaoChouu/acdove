@@ -13,10 +13,64 @@
             font-weight: bold;
             transition: all .3s;
             margin: auto;
+            cursor: pointer; /* Change cursor to pointer */
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #ccc;
+            background-color: white;
+            padding: 20px;
+            z-index: 1000;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
         }
     </style>
+    <script>
+        function showPopup(videoUrl) {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('downloadLink').href = videoUrl; // Set direct download link
+            document.getElementById('previewLink').href = videoUrl; // Set preview link
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function openOverlay() {
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeOverlay() {
+            closePopup();
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
 </head>
 <body>
+    <div class="overlay" id="overlay" onclick="closeOverlay()"></div>
+    <div class="popup" id="popup">
+        <h3>选择功能</h3>
+        <button onclick="window.open('https://example.com/cloud-download', '_blank')">网盘下载（功能未完善！！）</button><br>
+        <button onclick="window.open(document.getElementById('previewLink').href, '_blank')">预览视频，也可在视频界面使用控件下载。</button><br>
+        <button onclick="window.location.href = document.getElementById('downloadLink').href">直接下载</button><br>
+        <button onclick="closePopup()">关闭</button>
+    </div>
+    
     <div class="hello">
         <h1>蛋仔派对赛季视频下载</h1>
         <h2>如果下载速度太慢，可以下载加速器(强烈建议下载加速器！不然国内下载速度会超级慢！）</h2>
@@ -27,68 +81,68 @@
         <div>
             更换蛋仔派对赛季视频教程: <a href="https://www.douyin.com/user/MS4wLjABAAAALpiQyvBqC2kYoLzpTy94my7he7OMifnRs_JPZmlA4YA?from_tab_name=main&modal_id=7403643200688164111">本本兔子的抖音视频</a>  
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s1eggyparty.mp4">怪奇工厂</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s1eggyparty.mp4')">
+            <a href="javascript:void(0);">怪奇工厂</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s2eggyparty.mp4">惊奇游乐园</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s2eggyparty.mp4')">
+            <a href="javascript:void(0);">惊奇游乐园</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s3eggyparty.mp4">疯狂马戏团</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s3eggyparty.mp4')">
+            <a href="javascript:void(0);">疯狂马戏团</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s4eggyparty.mp4">汪汪向前冲</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s4eggyparty.mp4')">
+            <a href="javascript:void(0);">汪汪向前冲</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s5eggyparty.mp4">糖果甜心：哇呼！感受到我的速度了吗？你可以做我最好的朋友吗？……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s5eggyparty.mp4')">
+            <a href="javascript:void(0);">糖果甜心：哇呼！感受到我的速度了吗？你可以做我最好的朋友吗？……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s6eggyparty.mp4">蛋糕蜜语：传说在一个甜蜜的午后，糖果森林迎来了不速之客……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s6eggyparty.mp4')">
+            <a href="javascript:void(0);">蛋糕蜜语：传说在一个甜蜜的午后，糖果森林迎来了不速之客……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s7eggyparty.mp4">音乐星企划：成功注入旋律，进入演奏模式……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s7eggyparty.mp4')">
+            <a href="javascript:void(0);">音乐星企划：成功注入旋律，进入演奏模式……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s8eggyparty.mp4">精灵之声：自从曜星离开后，我以为，世界上不会再有音乐了……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s8eggyparty.mp4')">
+            <a href="javascript:void(0);">精灵之声：自从曜星离开后，我以为，世界上不会再有音乐了……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s9eggyparty.mp4">勇闯龙蛋岛</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s9eggyparty.mp4')">
+            <a href="javascript:void(0);">勇闯龙蛋岛</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s10eggyparty.mp4">太空奇遇季</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s10eggyparty.mp4')">
+            <a href="javascript:void(0);">太空奇遇季</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s11eggyparty.mp4">梦幻星遇季：那些深埋内心的恐惧，总会以梦的形式再次出现……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s11eggyparty.mp4')">
+            <a href="javascript:void(0);">梦幻星遇季：那些深埋内心的恐惧，总会以梦的形式再次出现……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s12eggyparty.mp4">寻秘狂欢季：欢迎来到狂欢节。这里是一切美妙故事的开始……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s12eggyparty.mp4')">
+            <a href="javascript:void(0);">寻秘狂欢季：欢迎来到狂欢节。这里是一切美妙故事的开始……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s13eggyparty.mp4">午夜魅影季：午夜剧院……欢迎所有迷路的灵魂。演员请就位！……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s13eggyparty.mp4')">
+            <a href="javascript:void(0);">午夜魅影季：午夜剧院……欢迎所有迷路的灵魂。演员请就位！……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s14eggyparty.mp4">寻光冰雪季：又梦见了冰原的冬日，极光女神消逝，三位伙伴相识……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s14eggyparty.mp4')">
+            <a href="javascript:void(0);">寻光冰雪季：又梦见了冰原的冬日，极光女神消逝，三位伙伴相识……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s15eggyparty.mp4">玩具历险季：怀揣着梦想而来的小蛋仔，请许下你的愿望……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s15eggyparty.mp4')">
+            <a href="javascript:void(0);">玩具历险季：怀揣着梦想而来的小蛋仔，请许下你的愿望……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s16eggyparty.mp4">潮玩大作战：那些被改造的玩具，最后都去了哪里？特发公司……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s16eggyparty.mp4')">
+            <a href="javascript:void(0);">潮玩大作战：那些被改造的玩具，最后都去了哪里？特发公司……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s17eggyparty.mp4">宝船拍卖夜：载满了珍宝的游船，现在已为你靠岸。听说了吗……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s17eggyparty.mp4')">
+            <a href="javascript:void(0);">宝船拍卖夜：载满了珍宝的游船，现在已为你靠岸。听说了吗……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s18eggyparty.mp4">深海逐金宴：几乎所有的罪恶，都来自于全能的黄金……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s18eggyparty.mp4')">
+            <a href="javascript:void(0);">深海逐金宴：几乎所有的罪恶，都来自于全能的黄金……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s19eggyparty.mp4">圆月哥特季：十五天后，我会被那些家伙撕碎……</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s19eggyparty.mp4')">
+            <a href="javascript:void(0);">圆月哥特季：十五天后，我会被那些家伙撕碎……</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/s20eggyparty.mp4">龙与剑之诗季：我重生了，重生在，我被龙杀死的100年之后……”</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/s20eggyparty.mp4')">
+            <a href="javascript:void(0);">龙与剑之诗季：我重生了，重生在，我被龙杀死的100年之后……”</a>
         </div>
-        <div>
-            <a href="https://xiaochouu.github.io/acdove/mopemope.mp4">MopeMope - もぺもぺ</a>
+        <div onclick="openOverlay(); showPopup('https://xiaochouu.github.io/acdove/mopemope.mp4')">
+            <a href="javascript:void(0);">MopeMope - もぺもぺ</a>
         </div>
     </div>
 </body>
