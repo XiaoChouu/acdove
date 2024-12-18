@@ -88,14 +88,14 @@
     <div class="overlay" id="overlay" onclick="closeOverlay()"></div>
     <div class="popup" id="popup">
         <h3>选择功能</h3>
-        <button onclick="window.open('？', '_blank')">网盘下载</button>
-        <button onclick="window.open(document.getElementById('previewLink').href, '_blank')">预览视频</button>
-        <button onclick="window.location.href = document.getElementById('downloadLink').href">直接下载</button>
+        <button onclick="window.open('？', '_blank')">网盘下载(功能未完善)</button>
+        <button onclick="window.open(document.getElementById('previewLink').href, '_blank')">预览视频(也可使用视频控件下载，推荐！！）</button>
+        <button onclick="window.location.href = document.getElementById('downloadLink').href">直接下载(Github可能无法下载)</button>
         <button onclick="closePopup()">关闭</button>
         
         <!-- 隐藏的链接 -->
         <a id="previewLink" style="display:none;"></a>
-        <a id="downloadLink" style="display:none;"></a>
+        <a id="download" style="display:none;"></a>
     </div>
     
     <div class="hello">
