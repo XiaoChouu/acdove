@@ -27,6 +27,7 @@
             z-index: 1000;
             width: 300px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px; /* Rounded corners */
         }
         .overlay {
             display: none;
@@ -38,12 +39,31 @@
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 999;
         }
+        /* Button styles */
+        .popup button {
+            background-color: #4CAF50; /* Green background */
+            border: none;
+            color: white; /* White text */
+            padding: 10px 15px; /* Padding */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px; /* Font size */
+            margin: 5px 0; /* Margin */
+            cursor: pointer; /* Pointer cursor on hover */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Transition */
+        }
+        .popup button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
     </style>
     <script>
         function showPopup(videoUrl) {
             document.getElementById('popup').style.display = 'block';
             document.getElementById('downloadLink').href = videoUrl; // Set direct download link
             document.getElementById('previewLink').href = videoUrl; // Set preview link
+            openOverlay();
         }
 
         function closePopup() {
@@ -65,9 +85,9 @@
     <div class="overlay" id="overlay" onclick="closeOverlay()"></div>
     <div class="popup" id="popup">
         <h3>选择功能</h3>
-        <button onclick="window.open('https://example.com/cloud-download', '_blank')">网盘下载（功能未完善！！）</button><br>
-        <button onclick="window.open(document.getElementById('previewLink').href, '_blank')">预览视频，也可在视频界面使用控件下载。</button><br>
-        <button onclick="window.location.href = document.getElementById('downloadLink').href">直接下载</button><br>
+        <button onclick="window.open('https://example.com/cloud-download', '_blank')">网盘下载</button>
+        <button onclick="window.open(document.getElementById('previewLink').href, '_blank')">预览视频</button>
+        <button onclick="window.location.href = document.getElementById('downloadLink').href">直接下载</button>
         <button onclick="closePopup()">关闭</button>
     </div>
     
@@ -149,4 +169,5 @@
 </html>
 
 
-本网站最后更新时间：2024年12月18日 20:06
+
+最后更新时间：2024年12月18日
