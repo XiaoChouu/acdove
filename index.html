@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蛋仔派对赛季视频下载</title>
+    <meta name="description" content="喵喵喵。这是蛋仔派队赛季视频下载，可以在这里下载蛋仔派对1-20赛季的视频。">
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .navbar-title {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .search-container {
+            position: relative;
+            margin: 20px auto;
+            max-width: 500px;
+            padding: 0 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #2196F3;
+            box-shadow: 0 0 10px rgba(33, 150, 243, 0.2);
+        }
+
+        .hello {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 150px;
+            background: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .video-description {
+            font-size: 0.9em;
+            color: #666;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            z-index: 1000;
+            width: 90%;
+            max-width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .popup h3 {
+            margin: 0 0 15px 0;
+            padding-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .popup button, .popup-button {
+            width: 100%;
+            background-color: #2196F3;
+            border: none;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            margin: 8px 0;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .popup button:hover, .popup-button:hover {
+            background-color: #1976D2;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            backdrop-filter: blur(3px);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2196F3;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .notice {
+            background: #E3F2FD;
+            color: #1565C0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 2px solid #2196F3;
+            animation: pulse 2s infinite;
+        }
+
+        .notice h2 {
+            color: #1565C0;
+            margin: 0 0 15px 0;
+        }
+
+        .notice a {
+            display: inline-block;
+            background: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .notice a:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+        }
+
+        .links {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .links a {
+            color: #2196F3;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+            color: #1976D2;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(33, 150, 243, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(33, 150, 243, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-content">
+            <a href="#" class="navbar-title">蛋仔派对视频下载</a>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="搜索视频..." id="searchInput" onkeyup="searchVideos()">
+    </div>
+
+    <div class="notice">
+        <h2>⚡国内下载强烈建议使用加速器！！！</h2>
+        <a href="watttoolkit.html">点击下载加速器</a>
+    </div>
+
+    <div class="links">
+        <a href="https://www.douyin.com/user/MS4wLjABAAAAIlnCToTNn3w5gYQstjAQhAvhaMbsyusIm_v-ygg8csI">抖音：XiaoChou</a>
+        <a href="https://www.douyin.com/user/MS4wLjABAAAALpiQyvBqC2kYoLzpTy94my7he7OMifnRs_JPZmlA4YA">更换教程</a>
+    </div>
+
+    <div class="video-grid">
+        <div class="video-card" onclick="showPopup('s1eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s1.png" alt="S1">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S1 怪奇工厂</div>
+                <div class="video-description">第1赛季</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s2eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s2.png" alt="S2">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S2 惊奇游乐园</div>
+                <div class="video-description">第2赛季</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s3eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s3.png" alt="S3">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S3 疯狂马戏团</div>
+                <div class="video-description">第3赛季</div>
+            </div>  
+        </div>
+
+        <div class="video-card" onclick="showPopup('s4eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s4.png" alt="S4">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S4 汪汪向前冲</div>
+                <div class="video-description">第4赛季</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s5eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s5.png" alt="S5">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S5 糖果甜心</div>
+                <div class="video-description">哇呼！感受到我的速度了吗？你可以做我最好的朋友吗？</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s6eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s6.png" alt="S6">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S6 蛋糕蜜语</div>
+                <div class="video-description">传说在一个甜蜜的午后，糖果森林迎来了不速之客</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s7eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s7.png" alt="S7">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S7 音乐星企划</div>
+                <div class="video-description">成功注入旋律，进入演奏模式</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s8eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s8.png" alt="S8">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S8 精灵之声</div>
+                <div class="video-description">自从曜星离开后，我以为，世界上不会再有音乐了</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s9eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s9.png" alt="S9">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S9 勇闯龙蛋岛</div>
+                <div class="video-description">第9赛季</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s10eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s10.png" alt="S10">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S10 太空奇遇季</div>
+                <div class="video-description">第10赛季</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s11eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s11.png" alt="S11">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S11 梦幻星遇季</div>
+                <div class="video-description">那些深埋内心的恐惧，总会以梦的形式再次出现</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s12eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s12.png" alt="S12">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S12 寻秘狂欢季</div>
+                <div class="video-description">欢迎来到狂欢节。这里是一切美妙故事的开始</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s13eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s13.png" alt="S13">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S13 午夜魅影季</div>
+                <div class="video-description">午夜剧院，欢迎所有迷路的灵魂。演员请就位！</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s14eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s14.png" alt="S14">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S14 寻光冰雪季</div>
+                <div class="video-description">又梦见了冰原的冬日，极光女神消逝，三位伙伴相识</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s15eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s15.png" alt="S15">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S15 玩具历险季</div>
+                <div class="video-description">怀揣着梦想而来的小蛋仔，请许下你的愿望</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s16eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s16.png" alt="S16">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S16 潮玩大作战</div>
+                <div class="video-description">那些被改造的玩具，最后都去了哪里？特发公司</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s17eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s17.png" alt="S17">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S17 宝船拍卖夜</div>
+                <div class="video-description">载满了珍宝的游船，现在已为你靠岸</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s18eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s18.png" alt="S18">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S18 深海逐金宴</div>
+                <div class="video-description">几乎所有的罪恶，都来自于全能的黄金</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s19eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s19.png" alt="S19">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S19 圆月哥特季</div>
+                <div class="video-description">十五天后，我会被那些家伙撕碎</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s20eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s20.png" alt="S20">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S20 龙与剑之诗季</div>
+                <div class="video-description">我重生了，重生在，我被龙杀死的100年之后</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('s21eggyparty.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/s21.png" alt="S21">
+            </div>
+            <div class="video-info">
+                <div class="video-title">S21 时之回响季</div>
+                <div class="video-description">时针指向21点前，这里梦幻又美好……</div>
+            </div>
+        </div>
+
+        <div class="video-card" onclick="showPopup('mopemope.mp4')">
+            <div class="video-thumbnail">
+                <img src="images/mopemope.png" alt="MopeMope">
+            </div>
+            <div class="video-info">
+                <div class="video-title">MopeMope</div>
+                <div class="video-description">もぺもぺ</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeOverlay()"></div>
+    <div class="popup" id="popup">
+        <h3>选择操作</h3>
+        <button onclick="window.open(window.currentVideoUrl, '_blank')">在线预览</button>
+        <a class="popup-button" id="downloadButton">下载视频</a>
+        <button onclick="closePopup()">关闭</button>
+    </div>
+
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+    <script>
+        function showPopup(videoUrl) {
+            document.getElementById('popup').style.display = 'block';
+            window.currentVideoUrl = videoUrl;
+            const downloadButton = document.getElementById('downloadButton');
+            downloadButton.href = videoUrl;
+            downloadButton.download = videoUrl;
+            openOverlay();
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function openOverlay() {
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeOverlay() {
+            closePopup();
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function searchVideos() {
+            const searchTerm = document.getElementById('searchInput').  value.toLowerCase();
+            const videoCards = document.getElementsByClassName('video-card');
+            
+            Array.from(videoCards).forEach(card => {
+                const title = card.querySelector('.video-title').textContent.toLowerCase();
+                const description = card.querySelector('.video-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        window.onscroll = function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function showPopup(videoUrl) {
+            document.getElementById('popup').style.display = 'block';
+            window.currentVideoUrl = videoUrl;
+            const downloadButton = document.getElementById('downloadButton');
+            downloadButton.href = videoUrl;
+            downloadButton.download = videoUrl;
+            openOverlay();
+        }
+    </script>
+</body>
+</html>
