@@ -625,9 +625,9 @@
 
     function selectCloud(url, code) {
         closeCloudPopup();
-        alert(`已选择云盘\n链接: ${url}\n分享码: ${code}`);
-        // 或者更新页面上的链接和分享码显示
-        document.querySelector('.notice a').href = url;
+        // 直接跳转到选择的云盘链接
+        window.open(url, '_blank');
+        // 更新页面显示的分享码
         document.querySelector('.notice h2').innerHTML = `💾网盘下载，访问码${code}（赛季视频，网站源码，图片……）`;
     }
     </script>
