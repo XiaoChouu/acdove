@@ -275,11 +275,10 @@
         <input type="text" class="search-input" placeholder="搜索视频..." id="searchInput" onkeyup="searchVideos()">
     </div>
 
-    </div>
-    <div class="notice">
-    <h2>💾网盘下载，访问码g1sx（赛季视频，网站源码，图片……）</h2>
-    <a href="https://cloud.189.cn/web/share?code=Z3eiA3BRNJbu" target="_blank">点击跳转网盘下载</a>
-    </div>
+<div class="notice">
+    <h2>网盘下载（赛季视频，图片……）</h2>
+    <a href="javascript:void(0)" onclick="showCloudPopup()">点击选择云盘下载</a>
+</div>
 
     <div class="links">
         <a href="https://www.douyin.com/video/7403643200688164111">更换教程</a>
@@ -540,6 +539,15 @@
 
     <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
+    <div class="popup" id="cloudPopup">
+        <h3>选择云盘</h3>
+        <button onclick="selectCloud('https://cloud.189.cn/t/yai67jIrMnqe', 'uxc4')">天翼云盘</button>
+        <button onclick="selectCloud('https://caiyun.139.com/m/i?2mKnFvjWcFH0w', 'a4og')">中国移动网盘</button>
+        <button onclick="selectCloud('https://www.alipan.com/s/bgsJqpXaXHt', '无分享码')">阿里云盘</button>
+        <button onclick="closeCloudPopup()">关闭</button>
+    </div>
+    
+
     <script>
         function showPopup(videoUrl) {
             document.getElementById('popup').style.display = 'block';
@@ -604,6 +612,24 @@
             downloadButton.download = videoUrl;
             openOverlay();
         }
+
+        function showCloudPopup() {
+        document.getElementById('cloudPopup').style.display = 'block';
+        openOverlay();
+    }
+
+    function closeCloudPopup() {
+        document.getElementById('cloudPopup').style.display = 'none';
+        closeOverlay();
+    }
+
+    function selectCloud(url, code) {
+        closeCloudPopup();
+        alert(`已选择云盘\n链接: ${url}\n分享码: ${code}`);
+        // 或者更新页面上的链接和分享码显示
+        document.querySelector('.notice a').href = url;
+        document.querySelector('.notice h2').innerHTML = `💾网盘下载，访问码${code}（赛季视频，网站源码，图片……）`;
+    }
     </script>
 </body>
 </html>
