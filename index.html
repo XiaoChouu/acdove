@@ -625,8 +625,10 @@
 
     function selectCloud(url, code) {
         closeCloudPopup();
-        // 直接跳转到选择的云盘链接
+        // 跳转链接
         window.open(url, '_blank');
+        // 显示分享码提示
+        alert(`已选择云盘\n分享码: ${code}`);
         // 更新页面显示的分享码
         document.querySelector('.notice h2').innerHTML = `💾网盘下载，访问码${code}（赛季视频，网站源码，图片……）`;
     }
