@@ -541,9 +541,10 @@
 
     <div class="popup" id="cloudPopup">
         <h3>选择云盘</h3>
-        <button onclick="selectCloud('https://cloud.189.cn/t/yai67jIrMnqe', 'uxc4')">天翼云盘，访问码uxc4（登录后保存下载，限速）</button>
         <button onclick="selectCloud('https://caiyun.139.com/m/i?2mKnFvjWcFH0w', 'a4og')">中国移动网盘，访问码a4og（推荐，不限速，但需要登录）</button>
         <button onclick="selectCloud('https://www.alipan.com/s/bgsJqpXaXHt', '无')">阿里云盘（推荐，不限速，登录后保存下载）</button>
+        <button onclick="selectCloud('https://www.123684.com/s/veLTjv-KNq5d', '无')">123云盘（登录后下载，不登录需要付费，限速）</button>
+        <button onclick="selectCloud('https://cloud.189.cn/t/yai67jIrMnqe', 'uxc4')">天翼云盘，访问码uxc4（登录后保存下载，限速）</button>
         <button onclick="closeCloudPopup()">关闭</button>
     </div>
     
@@ -627,8 +628,8 @@
         closeCloudPopup();
         // 直接跳转到选择的云盘链接
         window.open(url, '_blank');
-        // 更新页面显示的分享码
-        document.querySelector('.notice h2').innerHTML = `💾网盘下载，访问码${code}（赛季视频，网站源码，图片……）`;
+        // 更新页面显示的分享码和链接
+        document.querySelector('.notice h2').innerHTML = `已选择网盘下载，访问码${code}，链接：<a href="${url}" target="_blank">点击跳转</a>`;
     }
     </script>
 </body>
